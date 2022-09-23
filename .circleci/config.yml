@@ -44,7 +44,7 @@ jobs:
           name: Build front-end
           command: |
             cd frontend
-            sudo chown -R ownerName: /usr/local/lib/node_modules
+            sudo chown -R $USER /usr/local/lib/node_modules
             npm install
             npm audit fix --force
             npm install -g tsc
@@ -65,7 +65,7 @@ jobs:
           name: Back-end build
           command: |
              cd backend
-             sudo chown -R ownerName: /usr/local/lib/node_modules
+             sudo chown -R $USER /usr/local/lib/node_modules
              npm install
              npm audit fix --force
              npm install -g tsc
