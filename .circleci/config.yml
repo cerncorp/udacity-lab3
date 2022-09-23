@@ -46,6 +46,7 @@ jobs:
             cd frontend
             npm install
             npm audit fix --force
+            npm install -g tsc
             npm run build
             exit 1
       - save_cache:
@@ -65,6 +66,7 @@ jobs:
              cd backend
              npm install
              npm audit fix --force
+             npm install -g tsc
              npm run build
              exit 1
       - save_cache:
