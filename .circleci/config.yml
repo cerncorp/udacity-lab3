@@ -46,8 +46,7 @@ jobs:
             cd frontend
             sudo chown -R $USER /usr/local/lib/node_modules
             npm install
-            npm audit fix --force
-            npm install -g tsc
+          
             npm run build
             exit 1
       - save_cache:
