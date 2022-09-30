@@ -39,7 +39,7 @@
     "@nestjs/jwt": "^8.0.0",
     "@nestjs/passport": "^8.0.0",
     "@nestjs/platform-express": "^8.0.0",
-    "@nestjs/swagger": "^8.0.0",
+    "@nestjs/swagger": "^6.0.4",
     "@nestjs/typeorm": "^8.0.0",
     "@types/jsonwebtoken": "^7.2.8",
     "@types/winston": "^2.4.4",
