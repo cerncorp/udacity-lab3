@@ -197,6 +197,8 @@ jobs:
       - image: circleci/node:13.8.0
     steps:
       - checkout
+      - add_ssh_keys:
+          fingerprints: ["d9:6e:a2:f9:25:b0:c3:86:2a:d5:91:10:e5:8d:64:62"]
       - run:
           name: Run migrations
           command: |
