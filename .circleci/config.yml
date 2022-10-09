@@ -217,13 +217,11 @@ jobs:
 
   deploy-frontend:
     docker:
-      - image: amazon/aws-cli
+      - image: sleavely/node-awscli:14.x
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: |
-            npm install python
+      - attach_workspace:
+          at: ~/
       - run:
           name: Get backend url
           command: |
