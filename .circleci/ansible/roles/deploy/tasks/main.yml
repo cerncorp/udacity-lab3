@@ -20,22 +20,24 @@
     state: present
 
 - name: Creates Directory
-  become: yes
   file:
     path: ~/backend
     state: directory
-    mode: 0755
 
 - name: Extract backend files
-  become: yes
-  shell: |
-    cd ~/backend
-    tar -vxf artifact.tar.gz
-       
+  unarchive:
+    src: artifact.tar.gz
+    dest: ~/backend
+
+- name: Installing node dependencies
+  command: npm install
+  args:
+    chdir: ~/backend
+
 - name: start the application
   become_user: ubuntu
-  command: pm2 start app.js -i max
-  tags: 
-    - app
+  command: pm2 start dist/main.js -i max
+  args:
+    chdir: ~/backend
 
 
