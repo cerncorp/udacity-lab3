@@ -293,7 +293,9 @@ jobs:
       - run:
           name: Install dependencies
           command: |
-            - run: apk add --update curl npm nodejs
+            apk --no-cache add curl
+            pip3 install awscli
+
       - run:
           name: Get backend url
           command: |
@@ -335,10 +337,6 @@ jobs:
       - image: amazon/aws-cli
     steps:
       - checkout
-      - run:
-          name: Install dependencies
-          command: |
-            # your code here
       - run:
           name: Update cloudfront distribution
           command: |
