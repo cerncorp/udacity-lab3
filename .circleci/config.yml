@@ -116,9 +116,9 @@ jobs:
             cd frontend
             npm install
             npm audit fix --audit-level=critical --force
-            npm audit --audit-level=critical
-      
-
+            npm audit fix --audit-level=critical --force
+            npm audit --audit-level=critical 
+            
   scan-backend:
     docker:
       - image: circleci/node:13.8.0
@@ -134,8 +134,6 @@ jobs:
             npm audit fix --audit-level=critical --force
             npm audit fix --audit-level=critical --force
             npm audit --audit-level=critical
-            npm install --save-dev webpack-cli@4.10.0
-            npm update kind-of --depth
       - slack/notify:
           event: fail
           template: basic_fail_1
