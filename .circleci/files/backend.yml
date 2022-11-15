@@ -29,7 +29,7 @@ Resources:
       SecurityGroups:
         - Ref: InstanceSecurityGroup
       KeyName: udapeople
-      ImageId: ami-0351643488963af72
+      ImageId: ami-0149b2da6ceec4bb0
       Tags:
         - Key: Name
           Value: !Sub backend-${ID}
