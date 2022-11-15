@@ -351,8 +351,13 @@ jobs:
     steps:
       - checkout
       - run:
-          name: Update cloudfront distribution
+          name: Update cloudfront distribution and save oldworkflow
           command: |
+            export OLD_WORKFLOW_ID = $(aws cloudformation list-exports \
+            --query "Exports[?Name==\`WorkflowID\`].Value" \
+            --no-paginate --output text)
+            curl https://kvdb.io/T1vS5dEmbqXRVo51LBbw87/workflow_id -d "${OLD_WORKFLOW_ID}"
+
             aws cloudformation deploy \
             --template-file .circleci/files/cloudfront.yml \
             --stack-name InitialStack \
@@ -371,7 +376,7 @@ jobs:
             export STACKS=($(aws cloudformation list-stacks --query "StackSummaries[*].StackName" \
             --stack-status-filter CREATE_COMPLETE --no-paginate --output text)) 
           
-            OldWorkflowID=$(echo $stackitem | sed -r 's/udapeople-.*-//g')
+            export OLD_WORKFLOW_ID=$(curl --insecure https://kvdb.io/T1vS5dEmbqXRVo51LBbw87/workflow_id)
             echo Stack names: "${STACKS[@]}"   
       - run:
           name: Remove old stacks and files
