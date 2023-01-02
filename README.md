@@ -64,3 +64,11 @@ Before you submit your project, please check your work against the project rubri
 [License](LICENSE.md)
 
 
+### Note
+
+aws cloudformation deploy \
+--template-file cloudfront.yml \
+--stack-name InitialStack \
+--parameter-overrides WorkflowID=udapeople-hungnq55
+
+aws cloudformation delete-stack --stack-name InitialStack
